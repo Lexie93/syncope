@@ -187,14 +187,16 @@ under the License.
         <filtering>true</filtering>
       </resource>
     </resources>
+<!--
     <testResources>
       <testResource>
         <directory>src/test/resources</directory>
         <filtering>true</filtering>        
       </testResource>
     </testResources>
-  </build>
+-->
 
+  </build>
   <profiles>
     <profile>
       <id>sqlgen</id>
