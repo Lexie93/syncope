@@ -246,6 +246,7 @@ under the License.
         </executions>
       </plugin>
       
+<!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
@@ -265,6 +266,7 @@ under the License.
           </execution>
         </executions>
       </plugin>
+-->
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -297,6 +299,7 @@ under the License.
         </executions>
       </plugin>
 
+<!--
       <plugin>
         <groupId>org.codehaus.cargo</groupId>
         <artifactId>cargo-maven2-plugin</artifactId>
@@ -378,6 +381,7 @@ under the License.
           </execution>
         </executions>
       </plugin>
+-->
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -498,11 +502,13 @@ under the License.
             </executions>
           </plugin>
 
+<!--
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
             <inherited>true</inherited>
           </plugin>
+-->
         </plugins>
 
         <testResources>
@@ -597,13 +603,16 @@ under the License.
             </executions>
           </plugin>
           
+<!--
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
             <inherited>true</inherited>
           </plugin>
+-->
         </plugins>
         
+<!--
         <testResources>
           <testResource>
             <directory>src/test/resources</directory>
@@ -630,6 +639,8 @@ under the License.
             <filtering>true</filtering>
           </testResource>
         </testResources>
+-->
+
       </build>
     </profile>
   
@@ -742,6 +753,7 @@ under the License.
             </executions>
           </plugin>
 
+<!--
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
@@ -754,6 +766,8 @@ under the License.
               </container>
             </configuration>
           </plugin>
+-->
+
         </plugins>
 
         <resources>
@@ -1024,6 +1038,7 @@ under the License.
             </executions>
           </plugin>
 
+<!--
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
@@ -1036,6 +1051,8 @@ under the License.
               </container>
             </configuration>
           </plugin>
+-->
+
         </plugins>
 
         <resources>
@@ -1156,6 +1173,7 @@ under the License.
             </executions>
           </plugin>
 
+<!--
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
@@ -1168,6 +1186,8 @@ under the License.
               </container>
             </configuration>
           </plugin>
+-->
+
         </plugins>
 
         <resources>
@@ -1260,6 +1280,7 @@ under the License.
             </executions>
           </plugin>
           
+<!--
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
@@ -1272,6 +1293,8 @@ under the License.
               </container>
             </configuration>
           </plugin>
+-->
+
         </plugins>
 
         <resources>
@@ -1373,6 +1396,7 @@ under the License.
             </executions>
           </plugin>
           
+<!--
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
@@ -1385,6 +1409,8 @@ under the License.
               </container>
             </configuration>
           </plugin>
+-->
+
         </plugins>
 
         <resources>
@@ -1478,6 +1504,7 @@ under the License.
             </executions>
           </plugin>
           
+<!--
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
@@ -1490,6 +1517,8 @@ under the License.
               </container>
             </configuration>
           </plugin>
+-->
+
         </plugins>
 
         <resources>
@@ -1552,6 +1581,7 @@ under the License.
         <defaultGoal>clean verify</defaultGoal>
 
         <plugins>
+<!--
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
@@ -1598,6 +1628,8 @@ under the License.
               </deployables>
             </configuration>
           </plugin>
+-->
+
         </plugins>
       </build>
     </profile>
@@ -1641,6 +1673,8 @@ under the License.
         <defaultGoal>clean verify</defaultGoal>
 
         <plugins>
+
+<!--
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
@@ -1670,6 +1704,8 @@ under the License.
               </configuration>
             </configuration>
           </plugin>
+-->
+
         </plugins>
       </build>
     </profile>
@@ -1702,6 +1738,8 @@ under the License.
         <defaultGoal>clean verify cargo:run</defaultGoal>
 
         <plugins>
+
+<!--
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
@@ -1717,6 +1755,8 @@ under the License.
               </configuration>
             </configuration>
           </plugin>
+-->
+
         </plugins>
       </build>
     </profile>
@@ -1733,6 +1773,7 @@ under the License.
         <defaultGoal>clean verify cargo:run</defaultGoal>
 
         <plugins>
+<!--
           <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
@@ -1749,6 +1790,7 @@ under the License.
               </configuration>
             </configuration>
           </plugin>
+-->
         </plugins>
 
         <resources>
