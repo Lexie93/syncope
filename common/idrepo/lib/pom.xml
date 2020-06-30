@@ -75,15 +75,57 @@ under the License.
       <artifactId>log4j-api</artifactId>
     </dependency>
     
+<!--
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
       <scope>test</scope>
     </dependency>
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <scope>test</scope>
+      </dependency>
+-->
+
+  <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+      </dependency>
   </dependencies>
   
   <build>
     <plugins>
+
+
+<plugin>
+        		<groupId>org.pitest</groupId>
+		        <artifactId>pitest-maven</artifactId>
+		        <version>1.5.1</version>
+			<executions>
+				<execution>
+					<phase>verify</phase>
+					<id>run-mutation-tests</id>
+					<goals>
+						<goal>mutationCoverage</goal>
+					</goals>
+					<configuration>
+						<targetClasses>
+							<param>org.apache.syncope.common.lib.search.SyncopeFiqlParser*</param>
+						</targetClasses>
+						<targetTests>
+							<param>org.apache.syncope.common.lib.search.*</param>
+						</targetTests>
+						<exportLineCoverage>true</exportLineCoverage>
+						<outputFormats><value>XML</value></outputFormats>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+
+
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>

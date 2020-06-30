@@ -390,6 +390,9 @@ under the License.
   </contributors>
 
   <properties>
+
+    <aggregate.report.dir>tests/target/site/jacoco-aggregate/jacoco.xml</aggregate.report.dir>
+
     <syncope.version>${project.version}</syncope.version>
 
     <connid.version>1.5.0.2</connid.version>
@@ -451,8 +454,12 @@ under the License.
     <cas.version>6.2.0-SNAPSHOT</cas.version>
 
     <h2.version>1.4.200</h2.version>
-
+<!--
     <junit.version>5.6.2</junit.version>
+-->
+
+    <junit.version>4.12</junit.version>
+
     <mockito.version>3.3.0</mockito.version>
 
     <swagger-core.version>2.1.2</swagger-core.version>
@@ -549,7 +556,7 @@ under the License.
     <sonar.java.source>${targetJdk}</sonar.java.source>
     <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
     <sonar.junit.reportPaths>${project.build.directory}/surefire-reports</sonar.junit.reportPaths>
-    <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+    <sonar.coverage.jacoco.xmlReportPaths>tests/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 
     <targetJdk>11</targetJdk>
     <rootpom.basedir>${basedir}</rootpom.basedir>
@@ -559,6 +566,15 @@ under the License.
   <dependencyManagement>
 
     <dependencies>
+<!--
+	<dependency>
+		<groupId>org.pitest</groupId>
+		<artifactId>pitest-maven</artifactId>
+		<version>1.5.1</version>
+		<type>maven-plugin</type>	
+	</dependency>
+-->
+
       <dependency>
         <groupId>javax.annotation</groupId>
         <artifactId>javax.annotation-api</artifactId>
@@ -1317,7 +1333,7 @@ under the License.
         <artifactId>api-ldap-codec-standalone</artifactId>
         <version>${apachedirapi.version}</version>
       </dependency>
-
+<!--
       <dependency>
         <groupId>com.icegreen</groupId>
         <artifactId>greenmail</artifactId>
@@ -1329,7 +1345,7 @@ under the License.
           </exclusion>
         </exclusions>
       </dependency>
-
+-->
       <dependency>
         <groupId>org.jasypt</groupId>
         <artifactId>jasypt</artifactId>
@@ -2032,6 +2048,9 @@ under the License.
         <version>${mockito.version}</version>
         <scope>test</scope>
       </dependency>
+
+
+<!--
       <dependency>
         <groupId>org.mockito</groupId>
         <artifactId>mockito-junit-jupiter</artifactId>
@@ -2044,6 +2063,14 @@ under the License.
           </exclusion>
         </exclusions>
       </dependency>
+-->
+
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+      </dependency>
+
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter</artifactId>
@@ -2054,6 +2081,7 @@ under the License.
 
   </dependencyManagement>
 
+<!--
   <repositories>
     <repository>
       <id>sonatype</id>
@@ -2066,7 +2094,8 @@ under the License.
       </snapshots>
     </repository>
   </repositories>
-
+-->
+<!--
   <pluginRepositories>
     <pluginRepository>
       <id>sonatype</id>
@@ -2099,6 +2128,7 @@ under the License.
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
+-->
 
   <build>
     <defaultGoal>clean verify</defaultGoal>
@@ -2115,6 +2145,8 @@ under the License.
             <showWarnings>true</showWarnings>
             <showDeprecation>true</showDeprecation>
             <compilerArgument>-Xlint:unchecked</compilerArgument>
+	    <source>11</source>
+            <target>11</target>
           </configuration>
         </plugin>
 
@@ -2285,12 +2317,14 @@ under the License.
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.22.2</version>
+          <version>3.0.0-M3</version>
+<!--
           <configuration>
             <redirectTestOutputToFile>true</redirectTestOutputToFile>
             <encoding>utf-8</encoding>
             <runOrder>alphabetical</runOrder>
           </configuration>
+-->
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -2311,6 +2345,7 @@ under the License.
           </executions>
         </plugin>
 
+<!--
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
@@ -2327,6 +2362,7 @@ under the License.
             <targetJdk>${targetJdk}</targetJdk>
           </configuration>
         </plugin>
+-->
 
         <plugin>
           <groupId>io.fabric8</groupId>
@@ -2430,6 +2466,7 @@ under the License.
         </executions>
       </plugin>
 
+<!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -2446,7 +2483,9 @@ under the License.
           </execution>
         </executions>
       </plugin>
+-->
 
+<!--
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -2469,7 +2508,8 @@ under the License.
           </execution>
         </executions>
       </plugin>
-
+-->
+<!--
       <plugin>
         <groupId>org.codehaus.gmavenplus</groupId>
         <artifactId>gmavenplus-plugin</artifactId>
@@ -2508,7 +2548,8 @@ under the License.
           </execution>
         </executions>
       </plugin>
-
+-->
+<!--
       <plugin>
         <groupId>org.apache.rat</groupId>
         <artifactId>apache-rat-plugin</artifactId>
@@ -2549,6 +2590,7 @@ under the License.
           </execution>
         </executions>
       </plugin>
+-->
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -2559,6 +2601,7 @@ under the License.
       </plugin>
 
       <!-- Put NOTICE and LICENSE files in all artifacts and javadocs -->
+<!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-resources-plugin</artifactId>
@@ -2604,7 +2647,8 @@ under the License.
           </execution>
         </executions>
       </plugin>
-
+-->
+<!--
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>ianal-maven-plugin</artifactId>
@@ -2615,13 +2659,14 @@ under the License.
               <goal>verify-legal-files</goal>
             </goals>
             <configuration>
-              <!-- Fail the build if any artifacts are missing legal files -->
+
               <strict>true</strict>
               <skip>${ianal.skip}</skip>
             </configuration>
           </execution>
         </executions>
       </plugin>
+-->
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -2911,6 +2956,7 @@ under the License.
         <defaultGoal>clean install</defaultGoal>
 
         <plugins>
+<!--
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-checkstyle-plugin</artifactId>
@@ -2921,6 +2967,7 @@ under the License.
               </execution>
             </executions>
           </plugin>
+-->
         </plugins>
       </build>
     </profile>
@@ -2932,10 +2979,42 @@ under the License.
         <module>docker</module>
       </modules>
     </profile>
+
+
+<!-- Profile for code coverage on sonar -->
+    <profile>
+      <id>coverage</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+
+          <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>prepare-agent</id>
+                <goals>
+                  <goal>prepare-agent</goal>
+                </goals>
+		<configuration>
+              <destFile>${sonar.jacoco.reportPath}</destFile>
+              </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
   </profiles>
 
   <modules>
     <module>common</module>
+    <module>tests</module>
+<!--
     <module>core</module>
     <module>client</module>
     <module>sra</module>
@@ -2945,6 +3024,7 @@ under the License.
     <module>archetype</module>
     <module>standalone</module>
     <module>ide</module>
+-->
   </modules>
 
 </project>
