@@ -36,6 +36,8 @@ public class SyncopeFiqlParserTest {
     public void parseComparisonTest(){
         try {
             Assert.assertNotNull(parser.parseComparison(field));
+            if (field == "" || field == "fieldName!~" || field == "=~value")
+                Assert.fail();
         } catch (SearchParseException e){
             Assert.assertTrue(field == "" || field == "fieldName!~" || field == "=~value");
         }
