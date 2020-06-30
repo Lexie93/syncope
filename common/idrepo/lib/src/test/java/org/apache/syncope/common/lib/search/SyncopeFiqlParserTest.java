@@ -14,13 +14,18 @@ import java.util.Collection;
 @RunWith(Parameterized.class)
 public class SyncopeFiqlParserTest {
 
-    private static SyncopeFiqlParser<SearchBean> parser = new SyncopeFiqlParser<>(SearchBean.class, AbstractFiqlSearchConditionBuilder.CONTEXTUAL_PROPERTIES);
+    private static final SyncopeFiqlParser<SearchBean> parser = new SyncopeFiqlParser<>(SearchBean.class, AbstractFiqlSearchConditionBuilder.CONTEXTUAL_PROPERTIES);
 
     private final String field;
 
     @Parameters
     public static Collection<String> getParameters(){
-        return Arrays.asList("fieldName=~value", "fieldName!~value", "");
+        return Arrays.asList(
+                "fieldName=~value",
+                "fieldName!~value",
+                "",
+                "fieldName!~",      //added to increase condition coverage
+                "=~value");
     }
 
     public SyncopeFiqlParserTest(String field){
@@ -32,7 +37,7 @@ public class SyncopeFiqlParserTest {
         try {
             Assert.assertNotNull(parser.parseComparison(field));
         } catch (SearchParseException e){
-            Assert.assertEquals(field, "");
+            Assert.assertTrue(field == "" || field == "fieldName!~" || field == "=~value");
         }
     }
 
