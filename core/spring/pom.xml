@@ -35,6 +35,7 @@ under the License.
   
   <properties>
     <rootpom.basedir>${basedir}/../..</rootpom.basedir>
+    <sonar.coverage.jacoco.xmlReportPaths>${rootpom.basedir}/${aggregate.report.dir}</sonar.coverage.jacoco.xmlReportPaths>
   </properties>
 
   <dependencies>    
@@ -124,15 +125,46 @@ under the License.
       <artifactId>spring-test</artifactId>
       <scope>test</scope>
     </dependency>
+
+<!--
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
       <scope>test</scope>
     </dependency>
+-->
+
   </dependencies>
 
   <build>
     <plugins>
+	
+		<plugin>
+        		<groupId>org.pitest</groupId>
+		        <artifactId>pitest-maven</artifactId>
+		        <version>1.5.1</version>
+			<executions>
+				<execution>
+					<phase>verify</phase>
+					<id>run-mutation-tests</id>
+					<goals>
+						<goal>mutationCoverage</goal>
+					</goals>
+					<configuration>
+						<targetClasses>
+							<param>org.apache.syncope.core.spring.security.Encryptor*</param>
+						</targetClasses>
+						<targetTests>
+							<param>org.apache.syncope.core.spring.security.*</param>
+						</targetTests>
+						<exportLineCoverage>true</exportLineCoverage>
+						<outputFormats><value>XML</value></outputFormats>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>

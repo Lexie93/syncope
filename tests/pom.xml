@@ -25,6 +25,11 @@
       <artifactId>syncope-common-idrepo-lib</artifactId>
       <version>${project.version}</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.syncope.core</groupId>
+      <artifactId>syncope-core-spring</artifactId>
+      <version>${project.version}</version>
+    </dependency>
   </dependencies>
 
 
@@ -59,6 +64,7 @@
 			<configuration>
 				<includes>
 					<include>org/apache/syncope/common/lib/search/SyncopeFiqlParser*.class</include>
+					<include>org/apache/syncope/core/spring/security/Encryptor.class</include>				
 				</includes>
 			</configuration>
 		</execution>

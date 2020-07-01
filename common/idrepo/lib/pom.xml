@@ -100,7 +100,7 @@ under the License.
     <plugins>
 
 
-<plugin>
+		<plugin>
         		<groupId>org.pitest</groupId>
 		        <artifactId>pitest-maven</artifactId>
 		        <version>1.5.1</version>
