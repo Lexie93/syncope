@@ -87,7 +87,29 @@ public class EncryptorTest{
             Encryptor crypto = Encryptor.getInstance("shortKey");
             try{
                 String encrypted = crypto.encode("message", null);
-                crypto.verify("message", null, encrypted);
+                Assert.assertTrue("false negative", crypto.verify("message", null, encrypted));
+            } catch (Exception e){
+                Assert.fail("Should not throw Exception " + e);
+            }
+        }
+
+        //added to increase line, condition and mutation coverages
+        @Test
+        public void testNoAES(){
+            try {
+                String encrypted = encryptor.encode("message", CipherAlgorithm.SHA);
+                Assert.assertTrue("false negative", encryptor.verify("message", CipherAlgorithm.SHA, encrypted));
+            } catch (Exception e){
+                Assert.fail("Should not throw Exception " + e);
+            }
+        }
+
+        //added to increase line and condition coverages
+        @Test
+        public void testNoAESWithSalt(){
+            try {
+                String encrypted = encryptor.encode("message", CipherAlgorithm.SMD5);
+                Assert.assertTrue("false negative", encryptor.verify("message", CipherAlgorithm.SMD5, encrypted));
             } catch (Exception e){
                 Assert.fail("Should not throw Exception " + e);
             }
