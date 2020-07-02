@@ -39,8 +39,8 @@ public class EncryptorTest{
         @Test
         public void testEncode() {
             try {
-                String encrypted = encryptor.encode(message, CipherAlgorithm.AES);
-                assertEquals("bad encoding", encryptedMessage, encrypted);
+                    String encrypted = encryptor.encode(message, CipherAlgorithm.AES);
+                    assertEquals("bad encoding", encryptedMessage, encrypted);
             } catch (Exception e){
                 Assert.fail("Should not throw Exception " + e);
             }
@@ -95,23 +95,14 @@ public class EncryptorTest{
 
         //added to increase line, condition and mutation coverages
         @Test
-        public void testNoAES(){
-            try {
-                String encrypted = encryptor.encode("message", CipherAlgorithm.SHA);
-                Assert.assertTrue("false negative", encryptor.verify("message", CipherAlgorithm.SHA, encrypted));
-            } catch (Exception e){
-                Assert.fail("Should not throw Exception " + e);
-            }
-        }
-
-        //added to increase line and condition coverages
-        @Test
-        public void testNoAESWithSalt(){
-            try {
-                String encrypted = encryptor.encode("message", CipherAlgorithm.SMD5);
-                Assert.assertTrue("false negative", encryptor.verify("message", CipherAlgorithm.SMD5, encrypted));
-            } catch (Exception e){
-                Assert.fail("Should not throw Exception " + e);
+        public void testEncodeVerify(){
+            for (CipherAlgorithm c : CipherAlgorithm.values()) {
+                try {
+                    String encrypted = encryptor.encode("message", c);
+                    Assert.assertTrue("false negative", encryptor.verify("message", c, encrypted));
+                } catch (Exception e) {
+                    Assert.fail("Should not throw Exception " + e);
+                }
             }
         }
 
