@@ -24,8 +24,8 @@ public class EncryptorTest{
         private final String encryptedMessage;
 
         @Parameterized.Parameters
-        public static Collection<String[]> getParameters(){
-            return Arrays.asList(new String[][]{
+        public static Collection<Object[]> getParameters(){
+            return Arrays.asList(new Object[][]{
                     {"string to encode", "wfvb5asUCaVke2twkQwb8KQmHDhdmm/xFHoOeLO+qzM="},
                     {null, null}
             });
@@ -76,6 +76,18 @@ public class EncryptorTest{
                 String encrypted = encryptor.encode("", CipherAlgorithm.AES);
                 String decrypted = encryptor.decode(encrypted, CipherAlgorithm.AES);
                 assertEquals("bad encoding", "", decrypted);
+            } catch (Exception e){
+                Assert.fail("Should not throw Exception " + e);
+            }
+        }
+
+        //added to increase line and condition coverages
+        @Test
+        public void testShortKeyAndNullCipherAlgorithm(){
+            Encryptor crypto = Encryptor.getInstance("shortKey");
+            try{
+                String encrypted = crypto.encode("message", null);
+                crypto.verify("message", null, encrypted);
             } catch (Exception e){
                 Assert.fail("Should not throw Exception " + e);
             }

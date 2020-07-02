@@ -2042,13 +2042,14 @@ under the License.
         <version>${spring.version}</version>
         <scope>test</scope>
       </dependency>
+<!--
       <dependency>
         <groupId>org.mockito</groupId>
-        <artifactId>mockito-core</artifactId>
-        <version>${mockito.version}</version>
+        <artifactId>mockito-inline</artifactId>
+        <version>2.12.0</version>
         <scope>test</scope>
       </dependency>
-
+-->
 
 <!--
       <dependency>
